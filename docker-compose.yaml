@@ -29,8 +29,8 @@ services:
     networks:
       - roboshop
     depends_on:
-      - redis
       - mongodb
+      - redis
 
   web:
     image: web:v1

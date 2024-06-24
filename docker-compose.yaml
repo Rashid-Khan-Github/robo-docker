@@ -10,7 +10,7 @@ volumes:
 
 services:
   mongodb:
-    image: mongodb:v1
+    image: dockerjackal/mongodb:v1
     container_name: mongodb
     networks:
       - roboshop
@@ -20,7 +20,7 @@ services:
         type: volume
 
   catalogue:
-    image: catalogue:v1
+    image: dockerjackal/catalogue:v1
     container_name: catalogue
     networks:
       - roboshop
@@ -28,7 +28,7 @@ services:
       - mongodb
 
   redis:
-    image: redis
+    image: dockerjackal/redis
     container_name: redis
     networks:
       - roboshop
@@ -38,7 +38,7 @@ services:
         type: volume
 
   user: 
-    image: user:v1
+    image: dockerjackal/user:v1
     container_name: user
     networks:
       - roboshop
@@ -47,7 +47,7 @@ services:
       - redis
 
   cart:
-    image: cart:v1
+    image: dockerjackal/cart:v1
     container_name: cart
     networks:
       - roboshop
@@ -56,7 +56,7 @@ services:
       - catalogue
 
   mysql:
-    image: mysql:v1
+    image: dockerjackal/mysql:v1
     container_name: mysql
     networks:
       - roboshop
@@ -66,7 +66,7 @@ services:
         type: volume
 
   shipping:
-    image: shipping:v1
+    image: dockerjackal/shipping:v1
     container_name: shipping
     networks:
       - roboshop
@@ -75,7 +75,7 @@ services:
       - cart
 
   rabbitmq:
-    image: rabbitmq
+    image: dockerjackal/rabbitmq
     environment:
       - RABBITMQ_DEFAULT_USER=roboshop
       - RABBITMQ_DEFAULT_PASS=roboshop123
@@ -88,7 +88,7 @@ services:
         type: volume
 
   payment:
-    image: payment:v1
+    image: dockerjackal/payment:v1
     container_name: payment
     networks:
       - roboshop
@@ -98,7 +98,7 @@ services:
       - rabbitmq
 
   web:
-    image: web:v1
+    image: dockerjackal/web:v1
     container_name: web
     networks:
       - roboshop
